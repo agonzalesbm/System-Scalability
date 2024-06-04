@@ -1,0 +1,47 @@
+services:
+  mysql-master:
+    image: mysql:8.0.26
+    container_name: mysql-master
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    networks:
+      - replication
+
+  mysql-rep1:
+    image: mysql:8.0.26
+    container_name: mysql-rep1
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    networks:
+      - replication
+
+  mysql-rep2:
+    image: mysql:8.0.26
+    container_name: mysql-rep2
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    networks:
+      - replication
+
+  mysql-rep3:
+    image: mysql:8.0.26
+    container_name: mysql-rep3
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    networks:
+      - replication
+
+networks:
+  replication:
